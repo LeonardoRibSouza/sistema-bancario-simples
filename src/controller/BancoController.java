@@ -1,5 +1,6 @@
 package controller;
 
+import exception.ErroView;
 import model.Conta;
 import util.VerificadorUtil;
 import view.menus.MenuInicialView;
