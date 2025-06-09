@@ -7,7 +7,7 @@ import util.VerificadorUtil;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class Tranferencia {
+public class TranferenciaQuestions {
 
     public static void perguntar(Conta conta, BancoController banco) {
         Scanner input = new Scanner(System.in);

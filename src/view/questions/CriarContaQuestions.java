@@ -4,7 +4,7 @@ import controller.BancoController;
 
 import java.util.Scanner;
 
-public class CriarContaView {
+public class CriarContaQuestions {
    public static void interfaceCriarConta(BancoController banco) {
        Scanner input = new Scanner(System.in);
 
