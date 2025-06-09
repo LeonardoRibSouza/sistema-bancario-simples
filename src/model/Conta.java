@@ -11,7 +11,7 @@ public class Conta {
     private String telefone;
     private String email;
     private Cartao numeroCartao;
-    private BigDecimal saldo;
+    private BigDecimal saldo = new BigDecimal("0.0");
     private double limite;
 
     public Conta(String nome,String senha,int idade,String cpf,String cep,String telefone,String email) {
@@ -23,9 +23,6 @@ public class Conta {
         setTelefone(telefone);
         setEmail(email);
         setLimite(200.00);
-        BigDecimal oi = new BigDecimal("100.10");
-        setSaldo(oi);
-
     }
 
     public String getNome() {

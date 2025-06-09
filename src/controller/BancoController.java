@@ -41,8 +41,9 @@ public class BancoController {
         if (conta.getSaldo().compareTo(valor)>=0){
             for (Conta alvo : contas){
                 if (alvo.getCpf().equals(cpf)) {
-                    alvo.setSaldo(valor);
-                    conta.getSaldo().subtract(valor);
+                    alvo.setSaldo(alvo.getSaldo().add(valor));
+                    conta.setSaldo(conta.getSaldo().subtract(valor));
+                    break;
                 }
             }
         }else{
