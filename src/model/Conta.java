@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Conta {
     private String nome;
     private String senha;
@@ -9,7 +11,7 @@ public class Conta {
     private String telefone;
     private String email;
     private Cartao numeroCartao;
-    private double saldo;
+    private BigDecimal saldo;
     private double limite;
 
     public Conta(String nome,String senha,int idade,String cpf,String cep,String telefone,String email) {
@@ -21,6 +23,8 @@ public class Conta {
         setTelefone(telefone);
         setEmail(email);
         setLimite(200.00);
+        BigDecimal oi = new BigDecimal("100.10");
+        setSaldo(oi);
 
     }
 
@@ -32,11 +36,11 @@ public class Conta {
         this.nome = nome;
     }
 
-    public double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
 

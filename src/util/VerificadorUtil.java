@@ -3,53 +3,61 @@ package util;
 public class VerificadorUtil {
     public static boolean verificarCpf(String cpf) {
 
-        if (cpf.length() == 11 && cpf.matches("\\d+")) {
-            int digito = 0;
-            int multiplicador = 10;
-            int total = 0;
-            for (int i = 0; i < cpf.length() - 2; i++) {
-                digito = cpf.charAt(i) - '0';
-                total += digito * multiplicador--;
-            }
-            int resto = total % 11;
-            int verificadorUm;
-            if (resto < 2) {
-                verificadorUm = 0;
-            } else {
-                verificadorUm = 11 - resto;
-            }
+        if (cpf == null) {
+            System.out.println("cpf nulo");
+        }else if (cpf.length() != 11) {
+            System.out.println("deve conter 11 digitos");
+        }
 
-            total = 0;
-            multiplicador = 11;
-
-            for (int i = 0; i < cpf.length()-2; i++) {
-                digito = cpf.charAt(i) - '0';
-                total += digito * multiplicador--;
-            }
-            total += verificadorUm * 2;
-            resto = total % 11;
-            int verificadorDois;
-            if (resto < 2) {
-                verificadorDois = 0;
+        for (int i = 0; i < cpf.length(); i++) {
+            if (Character.isDigit(cpf.charAt(i))) {
+                continue;
             } else {
-                verificadorDois = 11 - resto;
+                throw new IllegalArgumentException("caractere invalido");
             }
+        }
 
-            if (verificadorUm == cpf.charAt(9) - '0' && verificadorDois == cpf.charAt(10) - '0') {
-                return true;
-            } else {
-                return false;
-            }
-        }else{
+        int peso = 10;
+        int total = 0;
+        for (int i = 0; i < cpf.length() - 2; i++) {
+            int digito = cpf.charAt(i) - '0';
+            total += digito * peso;
+            peso--;
+        }
+        int digito1;
+        if (total % 11 < 2) {
+            digito1 = 0;
+        } else {
+            digito1 = 11 - (total % 11);
+        }
+
+        peso = 11;
+        total = 0;
+        for (int i = 0; i < cpf.length() - 2; i++) {
+            int digito = cpf.charAt(i) - '0';
+            total += digito * peso;
+            peso--;
+        }
+        total += digito1 * 2;
+
+        int digito2;
+        if (total % 11 < 2) {
+            digito2 = 0;
+        } else {
+            digito2 = 11 - (total % 11);
+        }
+
+        if (cpf.charAt(cpf.length() - 2) - '0' == digito1 && cpf.charAt(cpf.length() - 1) - '0' == digito2) {
+            return true;
+        } else {
             return false;
         }
     }
-
     public static  boolean verificarIdade(int idade){
         if(idade<18){
-            return true;
-        }else {
             return false;
+        }else {
+            return true;
         }
     }
 

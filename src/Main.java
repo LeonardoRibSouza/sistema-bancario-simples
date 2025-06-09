@@ -1,5 +1,5 @@
 import controller.BancoController;
-import view.CriarContaView;
+import view.questions.CriarContaView;
 
 
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class Main {
                     CriarContaView.interfaceCriarConta(banco);
                     break;
                 case "2":
-
+                    
             }
         }while (!resp.equals("6"));
     }

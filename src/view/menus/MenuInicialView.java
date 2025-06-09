@@ -1,4 +1,4 @@
-package view;
+package view.menus;
 
 import controller.BancoController;
 import model.Conta;
@@ -12,20 +12,20 @@ public class MenuInicialView {
         String resp = "0";
 
         do {
-            System.out.printf("----------------Menu Inicial----------------");
-            System.out.print("Nome: "+conta.getNome());
-            System.out.print("Saldo: "+conta.getSaldo());
-            System.out.print("""
+            System.out.println("----------------Menu Inicial----------------");
+            System.out.println("Nome: "+conta.getNome());
+            System.out.println("Saldo: "+conta.getSaldo());
+            System.out.println("""
                     [1] Fazer Tranferencia
                     [2] Solicitar Cartão
                     [3] 
                     """);
-            resp = input.nextLine();                                                                                                                  input.nextLine();
-
-            switch (resp){
+            resp = input.nextLine();
+            switch (resp) {
                 case "1":
                     Tranferencia.perguntar(conta,banco);
             }
+
 
         }while (!resp.equals("6"));
     }
