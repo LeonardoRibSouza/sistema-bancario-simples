@@ -1,16 +1,21 @@
 import controller.BancoController;
-import view.questions.CriarContaQuestions;
-import view.questions.LogarQuestions;
+import model.Conta;
+import view.menus.LoginView;
+import view.questions.CriarContaView;
 
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        ArrayList<Conta> contas = new ArrayList<>();
         Scanner input = new Scanner(System.in);
-        BancoController banco = new BancoController();
+
+        BancoController banco = new BancoController(contas);
         String resp = "0";
         System.out.println("----------------Banco----------------");
         do {
@@ -21,10 +26,10 @@ public class Main {
             resp = input.nextLine();
             switch (resp) {
                 case "1":
-                    CriarContaQuestions.interfaceCriarConta(banco);
+                    CriarContaView.interfaceCriarConta(banco);
                     break;
                 case "2":
-                    LogarQuestions.login(banco);
+                    LoginView.loginView(banco);
             }
         }while (!resp.equals("6"));
     }

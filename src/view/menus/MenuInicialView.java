@@ -2,7 +2,7 @@ package view.menus;
 
 import controller.BancoController;
 import model.Conta;
-import view.questions.TranferenciaQuestions;
+import view.questions.Tranferencia;
 
 import java.util.Scanner;
 
@@ -18,15 +18,15 @@ public class MenuInicialView {
             System.out.println("""
                     [1] Fazer Tranferencia
                     [2] Solicitar Cartão
-                    [3] Sair
+                    [3] 
                     """);
             resp = input.nextLine();
             switch (resp) {
                 case "1":
-                    TranferenciaQuestions.perguntar(conta,banco);
-                    break;
-
+                    Tranferencia.perguntar(conta,banco);
             }
-        }while (!resp.equals("3"));
+
+
+        }while (!resp.equals("6"));
     }
 }
