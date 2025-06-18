@@ -2,6 +2,8 @@ package view.menus;
 
 import controller.BancoController;
 import model.Conta;
+import util.CartaoUtil;
+import view.questions.SolicitarCartaoQuestions;
 import view.questions.Tranferencia;
 
 import java.util.Scanner;
@@ -24,6 +26,10 @@ public class MenuInicialView {
             switch (resp) {
                 case "1":
                     Tranferencia.perguntar(conta,banco);
+                    break;
+                case "2":
+                    SolicitarCartaoQuestions.solicitarCartaoQuestions(banco,conta);
+                    break;
             }
 
 

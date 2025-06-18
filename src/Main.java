@@ -1,7 +1,7 @@
 import controller.BancoController;
 import model.Conta;
 import view.menus.LoginView;
-import view.questions.CriarContaView;
+import view.questions.CriarContaQuestions;
 
 
 import java.io.IOException;
@@ -26,10 +26,13 @@ public class Main {
             resp = input.nextLine();
             switch (resp) {
                 case "1":
-                    CriarContaView.interfaceCriarConta(banco);
+                    CriarContaQuestions.interfaceCriarConta(banco);
                     break;
                 case "2":
                     LoginView.loginView(banco);
+                    break;
+                default:
+                    System.out.println("Opção Invalida!!!, tente novamente!");
             }
         }while (!resp.equals("6"));
     }

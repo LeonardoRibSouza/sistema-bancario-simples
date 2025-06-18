@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class CartaoUtil {
 
-    public String gerarNumeroCartao(){
+    public static String gerarNumeroCartao(){
         int[] numeroCartao = new int[16];
         Random random = new Random();
 

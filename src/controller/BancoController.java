@@ -1,8 +1,10 @@
 package controller;
 
 import exception.ErroView;
+import model.Cartao;
 import model.Conta;
 import save.ArquivarUtil;
+import util.CartaoUtil;
 import util.VerificadorUtil;
 import view.menus.MenuInicialView;
 
@@ -23,14 +25,27 @@ public class BancoController{
 
         while(true) {
             if (!VerificadorUtil.verificarIdade(idade)) {
-                ErroView.menorDeIdadeView();
+                ErroView.menorDeIdadeErro();
                 break;
             }
+
             if (!VerificadorUtil.verificarCpf(cpf)) {
-                ErroView.mensagemInvalidaView();
+                ErroView.caractereInvalidaErro("cpf");
                 break;
             }
+
+            if (!VerificadorUtil.verificarEmail(email)) {
+                ErroView.caractereInvalidaErro("email");
+                break;
+            }
+
+            if (!VerificadorUtil.verificarTelefone(telefone)) {
+                ErroView.caractereInvalidaErro("telefone");
+                break;
+            }
+
             Conta novaConta = new Conta(nome,senha, idade,cpf,cep,telefone,email);
+            contas = save.lerUsuarios();
             contas.add(novaConta);
             save.salvarUsuarios(contas);
             logarConta(cpf,senha,banco);
@@ -61,4 +76,13 @@ public class BancoController{
             throw new RuntimeException("sem saldo suficiente");
         }
     }
+
+    public void solicitarCartao(Conta conta,BancoController banco,String tipoCartao){
+        String numeroCartao = CartaoUtil.gerarNumeroCartao();
+        Cartao cartao = new Cartao();
+        cartao.setNumeroCartao(numeroCartao);
+        cartao.setContaAssociada(conta);
+        cartao.setTipo(tipoCartao);
+    }
+
 }

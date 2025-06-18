@@ -1,5 +1,8 @@
 package util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class VerificadorUtil {
     public static boolean verificarCpf(String cpf) {
 
@@ -53,12 +56,25 @@ public class VerificadorUtil {
             return false;
         }
     }
+
     public static  boolean verificarIdade(int idade){
         if(idade<18){
             return false;
         }else {
             return true;
         }
+    }
+
+    public static  boolean verificarEmail(String email){
+        Pattern p = Pattern.compile("^[a-z0-9.]+@[a-z0-9]+\\.[a-z]+(\\.[a-z]+)?$", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(email);
+        return m.find();
+    }
+
+    public static  boolean verificarTelefone(String telefone){
+        Pattern p = Pattern.compile("^\\d{2}9\\d{8}$");
+        Matcher m = p.matcher(telefone);
+        return m.find();
     }
 
 }

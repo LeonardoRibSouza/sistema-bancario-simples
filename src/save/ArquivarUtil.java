@@ -12,20 +12,19 @@ import model.Conta;
 public class ArquivarUtil {
 
     private String filePath = "/src/save";
-    private File cadastros = new File("cadastros.json");
+    private File cadastros = new File("src/save/cadastros.json");
 
     private Gson gson = new Gson();
 
-
     public void salvarUsuarios(ArrayList contas) throws IOException {
+        new File(filePath).mkdir();
+        String contasJson = gson.toJson(contas);
+        FileWriter writer = new FileWriter(cadastros);
+        BufferedWriter bw = new BufferedWriter(writer);
+        bw.write(contasJson);
 
-            String contasJson = gson.toJson(contas);
-            FileWriter writer = new FileWriter(cadastros);
-            BufferedWriter bw = new BufferedWriter(writer);
-            bw.write(contasJson);
-
-            bw.close();
-            writer.close();
+        bw.close();
+        writer.close();
     }
 
     public ArrayList<Conta> lerUsuarios() throws FileNotFoundException {

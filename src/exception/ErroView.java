@@ -2,12 +2,12 @@ package exception;
 
 public class ErroView {
 
-    public static void menorDeIdadeView() {
-        System.out.print("!!!Proibido para menores de 18 anos!!!");
+    public static void menorDeIdadeErro() {
+        System.out.println("!!!Proibido para menores de 18 anos!!!");
     }
 
-    public static void mensagemInvalidaView() {
-        System.out.print("!!!Invalido!!!");
+    public static void caractereInvalidaErro(String caractere) {
+        System.out.println(caractere+" Invalido(a) !!!, tente novamente!");
     }
 
 }
