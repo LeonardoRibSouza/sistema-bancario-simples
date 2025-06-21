@@ -14,7 +14,9 @@ public class TranferenciaQuestions {
 
         System.out.println("digite o CPF da conta que deseja tranferir: ");
         String cpf = input.nextLine();
-        if (VerificadorUtil.verificarCpf(cpf)==false) throw new RuntimeException("CPF invalido");
+        if (VerificadorUtil.verificarCpf(cpf)==false){
+            System.out.println("CPF invalido");
+        }
 
         try {
             System.out.println("digite o valor que deseja tranferir: ");

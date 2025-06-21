@@ -1,11 +1,12 @@
 package model;
 
 public class Cartao {
+    private String Titular;
     private String numeroCartao;
     private String tipo;
     private String validade;
     private double limiteCartao;
-    private int cvv;
+    private String cvv;
     public Conta contaAssociada;
 
     public double getLimiteCartao() {
@@ -40,11 +41,11 @@ public class Cartao {
         this.validade = validade;
     }
 
-    public int getCvv() {
+    public String getCvv() {
         return cvv;
     }
 
-    public void setCvv(int cvv) {
+    public void setCvv(String cvv) {
         this.cvv = cvv;
     }
 
@@ -54,5 +55,13 @@ public class Cartao {
 
     public void setContaAssociada(Conta contaAssociada) {
         this.contaAssociada = contaAssociada;
+    }
+
+    public String getTitular() {
+        return Titular;
+    }
+
+    public void setTitular(String titular) {
+        Titular = titular;
     }
 }

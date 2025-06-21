@@ -1,24 +1,29 @@
 package view.questions;
 
 import controller.BancoController;
-
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LogarQuestions {
 
-    public static void login(BancoController banco) throws FileNotFoundException {
+    public static void interfaceLogin(BancoController banco) {
         Scanner input = new Scanner(System.in);
-
-        System.out.println("""
+        do{
+            System.out.println("""
                 ---------------------------
+                [1] para sair.
                 Digite sua infomações:
                 Cpf:""");
-        String cpf = input.nextLine();
-        System.out.print("Senha: ");
-        String senha = input.nextLine();
+            String cpf = input.nextLine();
 
-        banco.logarConta(cpf,senha,banco);
+            System.out.print("Senha: ");
+            String senha = input.nextLine();
+
+            banco.logarConta(cpf,senha,banco);
+            System.out.println("Essa conta não existe!");
+            if (cpf.equals("1") || senha.equals("1")) {
+                break;
+            }
+        }while(true);
     }
 
 }

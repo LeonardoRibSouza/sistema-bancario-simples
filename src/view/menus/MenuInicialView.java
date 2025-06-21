@@ -2,10 +2,9 @@ package view.menus;
 
 import controller.BancoController;
 import model.Conta;
-import util.CartaoUtil;
+import view.questions.MostrarDadosDoCartaoQuestions;
 import view.questions.SolicitarCartaoQuestions;
 import view.questions.Tranferencia;
-
 import java.util.Scanner;
 
 public class MenuInicialView {
@@ -20,7 +19,7 @@ public class MenuInicialView {
             System.out.println("""
                     [1] Fazer Tranferencia
                     [2] Solicitar Cartão
-                    [3] 
+                    [3] Mostrar dados do cartao
                     """);
             resp = input.nextLine();
             switch (resp) {
@@ -30,6 +29,8 @@ public class MenuInicialView {
                 case "2":
                     SolicitarCartaoQuestions.solicitarCartaoQuestions(banco,conta);
                     break;
+                case "3":
+                    MostrarDadosDoCartaoQuestions.exibirDados(conta);
             }
 
 

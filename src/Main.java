@@ -1,17 +1,14 @@
 import controller.BancoController;
 import model.Conta;
-import view.menus.LoginView;
 import view.questions.CriarContaQuestions;
-
-
-import java.io.IOException;
+import view.questions.LogarQuestions;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ArrayList<Conta> contas = new ArrayList<>();
         Scanner input = new Scanner(System.in);
 
@@ -29,7 +26,7 @@ public class Main {
                     CriarContaQuestions.interfaceCriarConta(banco);
                     break;
                 case "2":
-                    LoginView.loginView(banco);
+                    LogarQuestions.interfaceLogin(banco);
                     break;
                 default:
                     System.out.println("Opção Invalida!!!, tente novamente!");

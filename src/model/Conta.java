@@ -3,6 +3,7 @@ package model;
 import java.math.BigDecimal;
 
 public class Conta {
+
     private String nome;
     private String senha;
     private int idade;
@@ -10,7 +11,7 @@ public class Conta {
     private String cep;
     private String telefone;
     private String email;
-    private Cartao numeroCartao;
+    private Cartao cartaoVinculado;
     private BigDecimal saldo = new BigDecimal("0.0");
     private double limite;
 
@@ -89,12 +90,12 @@ public class Conta {
         this.email = email;
     }
 
-    public Cartao getNumeroCartao() {
-        return numeroCartao;
+    public Cartao getCartaoVinculado() {
+        return cartaoVinculado;
     }
 
-    public void setNumeroCartao(Cartao numeroCartao) {
-        this.numeroCartao = numeroCartao;
+    public void setCartaoVinculado(Cartao cartaoVinculado) {
+        this.cartaoVinculado = cartaoVinculado;
     }
 
     public String getCep() {

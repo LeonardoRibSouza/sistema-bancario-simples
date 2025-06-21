@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CriarContaQuestions {
-   public static void interfaceCriarConta(BancoController banco) throws IOException {
+   public static void interfaceCriarConta(BancoController banco){
        Scanner input = new Scanner(System.in);
        String nome = "";
        String senha = "";

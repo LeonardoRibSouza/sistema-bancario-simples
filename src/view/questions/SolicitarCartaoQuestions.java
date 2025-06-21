@@ -2,16 +2,17 @@ package view.questions;
 
 import controller.BancoController;
 import model.Conta;
-
 import java.util.Scanner;
 
 public class SolicitarCartaoQuestions {
 
-    public static void solicitarCartaoQuestions(BancoController banco, Conta conta) {
+    public static void solicitarCartaoQuestions(BancoController banco, Conta conta){
         Scanner input = new Scanner(System.in);
-        System.out.println("Digite o tipo de cartão que deseja solicitar: " +
-                           "[1] Crédito         " +
-                           "[2] Débito          ");
+        System.out.println("""
+                Digite o tipo de Cartao que deseja solicitar
+                [1] Crédito
+                [2] Débito
+                """);
         String resp = input.nextLine();
         String tipoCartao;
         if (resp.equals("1")) {
@@ -19,8 +20,8 @@ public class SolicitarCartaoQuestions {
         }else{
             tipoCartao = "Débito";
         }
-        System.out.println("Cartão gerado com sucesso!");
         banco.solicitarCartao(conta,banco,tipoCartao);
+        System.out.println("Cartão solicitado com sucesso!");
     }
 
 }

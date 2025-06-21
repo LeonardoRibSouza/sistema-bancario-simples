@@ -1,5 +1,7 @@
 package util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class CartaoUtil {
@@ -41,6 +43,19 @@ public class CartaoUtil {
             numeroCartaoPronto += numeroCartao[i];
         }
         return numeroCartaoPronto;
+    }
+
+    public static String gerarDataDeValidade(){
+        LocalDate now = LocalDate.now().plusDays(365*6);
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/yy");
+        return now.format(dateFormat);
+    }
+
+    public static String gerarCvv(){
+        Random random = new Random();
+        int cvvInt = random.nextInt(1000);
+
+        return String.format("%03d", cvvInt);
     }
 
 }
