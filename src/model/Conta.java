@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class Conta {
 
+    private Long id;
     private String nome;
     private String senha;
     private int idade;
@@ -106,4 +107,11 @@ public class Conta {
         this.cep = cep;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

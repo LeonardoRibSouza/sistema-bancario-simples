@@ -9,21 +9,30 @@ import java.util.Scanner;
 
 public class TranferenciaQuestions {
 
-    public static void perguntar(Conta conta, BancoController banco) {
-        Scanner input = new Scanner(System.in);
+    public static void perguntar(Conta conta, BancoController banco,Scanner input) {
+        input.nextLine();
 
-        System.out.println("digite o CPF da conta que deseja tranferir: ");
-        String cpf = input.nextLine();
-        if (VerificadorUtil.verificarCpf(cpf)==false){
-            System.out.println("CPF invalido");
-        }
+        do{
+            System.out.println("digite o CPF da conta que deseja tranferir: (digite 1 para sair!)");
+            String cpf = input.nextLine();
+            if (cpf.equals("1")) {
+                break;
+            }
+            if (VerificadorUtil.verificarCpf(cpf) == false) {
+                System.out.println("CPF invalido");
+                break;
+            }
 
-        try {
-            System.out.println("digite o valor que deseja tranferir: ");
-            BigDecimal valor = new BigDecimal(input.nextLine());
-            banco.transferirSaldo(cpf,valor,conta);
-        }catch (Exception e){
-            System.out.println("Digite um valor valido");
-        }
+            try {
+                System.out.println("digite o valor que deseja tranferir: (digite 1 para sair!)");
+                BigDecimal valor = new BigDecimal(input.nextLine());
+                if (valor.equals("1")) {
+                    break;
+                }
+                banco.transferirSaldo(cpf, valor, conta);
+            } catch (Exception e) {
+                System.out.println("Digite um valor valido");
+            }
+        }while (true);
     }
 }

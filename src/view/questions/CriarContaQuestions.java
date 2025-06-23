@@ -8,8 +8,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CriarContaQuestions {
-   public static void interfaceCriarConta(BancoController banco){
-       Scanner input = new Scanner(System.in);
+   public static void interfaceCriarConta(BancoController banco,Scanner input){
+       input.nextLine();
        String nome = "";
        String senha = "";
        String cpf = "";

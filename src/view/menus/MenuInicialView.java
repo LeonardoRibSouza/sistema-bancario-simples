@@ -2,9 +2,11 @@ package view.menus;
 
 import controller.BancoController;
 import model.Conta;
+import save.ArquivarUtil;
 import view.questions.MostrarDadosDoCartaoQuestions;
 import view.questions.SolicitarCartaoQuestions;
-import view.questions.Tranferencia;
+import view.questions.TranferenciaQuestions;
+
 import java.util.Scanner;
 
 public class MenuInicialView {
@@ -20,20 +22,25 @@ public class MenuInicialView {
                     [1] Fazer Tranferencia
                     [2] Solicitar Cartão
                     [3] Mostrar dados do cartao
+                    [4] Ver Extrato
+                    [5] Sair
                     """);
             resp = input.nextLine();
             switch (resp) {
                 case "1":
-                    Tranferencia.perguntar(conta,banco);
+                    TranferenciaQuestions.perguntar(conta,banco,input);
+                    conta = banco.atualizarConta(conta);
                     break;
                 case "2":
-                    SolicitarCartaoQuestions.solicitarCartaoQuestions(banco,conta);
+                    SolicitarCartaoQuestions.solicitarCartaoQuestions(banco,conta,input);
+                    conta = banco.atualizarConta(conta);
                     break;
                 case "3":
                     MostrarDadosDoCartaoQuestions.exibirDados(conta);
+                    break;
             }
 
 
-        }while (!resp.equals("6"));
+        }while (!resp.equals("5"));
     }
 }

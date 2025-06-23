@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class SistemaBancarioSimples {
     public static void main(String[] args) {
         ArrayList<Conta> contas = new ArrayList<>();
         Scanner input = new Scanner(System.in);
@@ -19,18 +19,22 @@ public class Main {
             System.out.print("""
                     [1] Criar uma conta
                     [2] Entra na minha conta
+                    [3] Sair
                     """);
             resp = input.nextLine();
             switch (resp) {
                 case "1":
-                    CriarContaQuestions.interfaceCriarConta(banco);
+                    CriarContaQuestions.interfaceCriarConta(banco,input);
                     break;
                 case "2":
-                    LogarQuestions.interfaceLogin(banco);
+                    LogarQuestions.interfaceLogin(banco,input);
+                    break;
+                case "3":
+                    System.out.println("Saindo...");
                     break;
                 default:
                     System.out.println("Opção Invalida!!!, tente novamente!");
             }
-        }while (!resp.equals("6"));
+        }while (!resp.equals("3"));
     }
 }

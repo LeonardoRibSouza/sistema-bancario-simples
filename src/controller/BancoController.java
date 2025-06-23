@@ -43,6 +43,20 @@ public class BancoController{
 
             Conta novaConta = new Conta(nome,senha, idade,cpf,cep,telefone,email);
             contas = save.lerUsuarios();
+
+            Conta contaAnterior;
+            Long idAnterior = 0L;
+            if(contas.size()>1) {
+                contaAnterior = contas.get(contas.size()-1);
+                idAnterior = contaAnterior.getId();
+                novaConta.setId(idAnterior+1);
+            }else if(contas.size()==1) {
+                novaConta.setId(idAnterior+1);
+            }else{
+                novaConta.setId(1L);
+            }
+
+
             contas.add(novaConta);
             save.salvarUsuarios(contas);
             logarConta(cpf,senha,banco);
@@ -52,11 +66,17 @@ public class BancoController{
 
     public void logarConta(String cpf,String senha,BancoController banco){
         contas = save.lerUsuarios();
-        for(Conta conta : contas){
-            if(conta.getCpf().equals(cpf) && conta.getSenha().equals(senha)){
-                MenuInicialView.interfaceMenuInicialView(conta,banco);
+        Conta contaAutenticada =null;
+        for (Conta conta : contas) {
+            if (conta.getCpf().equals(cpf) && conta.getSenha().equals(senha)) {
+                contaAutenticada = conta;
                 break;
             }
+        }
+        if (contaAutenticada == null){
+            System.out.println("CPF ou senha inválidos!!!");
+        }else {
+            MenuInicialView.interfaceMenuInicialView(contaAutenticada,banco);
         }
     }
 
@@ -70,6 +90,7 @@ public class BancoController{
                 if (alvo.getCpf().equals(cpf)) {
                     alvo.setSaldo(alvo.getSaldo().add(valor));
                     conta.setSaldo(conta.getSaldo().subtract(valor));
+                    save.salvarUsuarios(contas);
                     break;
                 }
             }
@@ -78,7 +99,7 @@ public class BancoController{
         }
     }
 
-    public void solicitarCartao(Conta conta,BancoController banco,String tipoCartao) {
+    public void solicitarCartao(Conta conta,String tipoCartao) {
         contas = save.lerUsuarios();
         for(Conta alvo : contas){
             if(alvo.getCpf().equals(conta.getCpf())){
@@ -93,11 +114,20 @@ public class BancoController{
                 cartao.setCvv(CartaoUtil.gerarCvv());
 
                 alvo.setCartaoVinculado(cartao);
-                conta = alvo;
             }
 
         }
         save.salvarUsuarios(contas);
+    }
+
+    public Conta atualizarConta(Conta conta){
+        contas = save.lerUsuarios();
+        for(Conta alvo : contas){
+            if (alvo.getId().equals(conta.getId())) {
+                return alvo;
+            }
+        }
+        return conta;
     }
 
 }

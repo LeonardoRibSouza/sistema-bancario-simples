@@ -9,8 +9,9 @@ public class MostrarDadosDoCartaoQuestions {
 
     public  static void exibirDados(Conta conta){
         ArquivarUtil save = new ArquivarUtil();
-        ArrayList<Conta> contas = new ArrayList<>();
+        ArrayList<Conta> contas;
         contas = save.lerUsuarios();
+
         for(Conta alvo : contas){
             if(alvo.getCpf().equals(conta.getCpf())){
                 if(conta.getCartaoVinculado() == null){
@@ -20,12 +21,14 @@ public class MostrarDadosDoCartaoQuestions {
                              Titular: %s
                             Numero: %s               Validade: %s
                             CVV: %s                  Limite: R$ %.2f
+                            Tipo: %s
                             """,
-                             conta.getCartaoVinculado().getTitular(),
+                            conta.getCartaoVinculado().getTitular(),
                             conta.getCartaoVinculado().getNumeroCartao(),
                             conta.getCartaoVinculado().getValidade(),
                             conta.getCartaoVinculado().getCvv(),
-                            conta.getCartaoVinculado().getLimiteCartao()
+                            conta.getCartaoVinculado().getLimiteCartao(),
+                            conta.getCartaoVinculado().getTipo()
                     );
                     System.out.println(exibicaoDosDados);
                 }

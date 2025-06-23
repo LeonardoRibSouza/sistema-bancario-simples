@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class SolicitarCartaoQuestions {
 
-    public static void solicitarCartaoQuestions(BancoController banco, Conta conta){
-        Scanner input = new Scanner(System.in);
+    public static void solicitarCartaoQuestions(BancoController banco, Conta conta,Scanner input) {
+        input.nextLine();
+
         System.out.println("""
                 Digite o tipo de Cartao que deseja solicitar
                 [1] Crédito
@@ -20,7 +21,7 @@ public class SolicitarCartaoQuestions {
         }else{
             tipoCartao = "Débito";
         }
-        banco.solicitarCartao(conta,banco,tipoCartao);
+        banco.solicitarCartao(conta,tipoCartao);
         System.out.println("Cartão solicitado com sucesso!");
     }
 
