@@ -63,12 +63,20 @@ O menu do sistema bancário aparecerá no console.
 O código-fonte está organizado em pacotes que separam as responsabilidades:
 
 src/
-├── controller/   # Contém a lógica de negócio (BancoController)
-├── exception/    # Classes para visualização de erros
-├── model/        # Classes de domínio (Conta, Cartao)
-├── save/         # Classe para manipulação de arquivos (ArquivarUtil)
-├── util/         # Classes de utilidades (VerificadorUtil, CartaoUtil)
-├── view/         # Classes de interação com o usuário
+├── controller/-# Contém a lógica de negócio (BancoController)
+
+├── exception/-# Classes para visualização de erros
+
+├── model/-# Classes de domínio (Conta, Cartao)
+
+├── save/-# Classe para manipulação de arquivos (ArquivarUtil)
+
+├── util/- # Classes de utilidades (VerificadorUtil, CartaoUtil)
+
+├── view/-# Classes de interação com o usuário
+
 │   ├── menus/
+
 │   └── questions/
-└── SistemaBancarioSimples.java     # Ponto de entrada da aplicação
+
+└── SistemaBancarioSimples.java-# Ponto de entrada da aplicação
